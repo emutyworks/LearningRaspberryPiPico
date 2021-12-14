@@ -32,8 +32,9 @@ $b = ($b & 0b11111000) << 5;
 $g1 = ($g & 0b00011000) << 11;
 $g2 = ($g & 0b11100000) >> 5;
 $g = $g1 | $g2;
-echo "$g\n";
-printf("%b",$g);
+
+$rgb = $r | $g | $b;
+echo "$rgb\n";
 
 --------------------------------------------
 [libraries/pico_graphics/pico_graphics.hpp]
