@@ -7,7 +7,7 @@
 
 using namespace pimoroni;
 
-extern unsigned char image_png[];
+extern unsigned int image_png[];
 //extern unsigned int image_png_len;
 
 uint16_t buffer[PicoDisplay::WIDTH * PicoDisplay::HEIGHT];
@@ -23,17 +23,19 @@ int main() {
 
   while(true) {
     uint16_t c;
-    int r,g,b;
+    //int r,g,b;
     for(int y=0; y<135; y++) {
       for(int x=0; x<240; x++) {
+        c = image_png[x+(y*240)];
+        pixel(x, y, c);
+        /*
         r = image_png[(x*3)+(y*240*3)];
         g = image_png[(x*3+1)+(y*240*3)];
         b = image_png[(x*3+2)+(y*240*3)];
-        
         c = pico_display.create_pen(r, g, b);
-        pixel(x, y, c);
         //pico_display.set_pen(r, g, b);
         //pico_display.pixel(Point(x, y));
+        */
       }
     }
     pico_display.update();
