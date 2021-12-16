@@ -14,23 +14,25 @@ body {
 </style>
 </head>
 <body>
+Converter to create 16-bit color data from PNG images: <a target="_blank" href="https://github.com/emutyworks/LearningRaspberryPiPico/wiki/View-Png-Image#structure-of-color-data">Structure of color data</a><br>
+<br>
 <form enctype="multipart/form-data" action="conv_png.php" method="POST">
   <input type="hidden" name="MAX_FILE_SIZE" value="1048576">
   <input type="hidden" name="mode" value="upload">
-  Set PNG Image: <input name="userfile" type="file"> <input type="submit" value="Convert"> 
-  *<a target="_blank" href="https://github.com/emutyworks/LearningRaspberryPiPico/wiki/View-Png-Image#structure-of-color-data">Structure of color data</a><br>
+  Set PNG Image: <input name="userfile" type="file"> <input type="submit" value="Convert">
 </form>
 <?php
 //ini_set('display_errors', "On");
 $res = "";
 if(isset($_POST['mode']) && $_POST['mode'] = "upload"){
+	$filename = $_FILES['userfile']['name'];
 	$imgfile = $_FILES['userfile']['tmp_name'];
 	$imgsize = getimagesize($imgfile);
 	if($imgsize['mime']=="image/png"){
 		$img_w = $imgsize[0];
 		$img_h = $imgsize[1];
 
-		printf("Width: %s Height: %s<br>",$img_w,$img_h);
+		printf("<br>Width: %s Height: %s | %s<br>",$img_w,$img_h,$filename);
 		$img = imagecreatefrompng($imgfile);
 		for($y=0; $y<$img_h; $y++){
 			for($x=0; $x<$img_w; $x++){
@@ -58,7 +60,7 @@ if(isset($_POST['mode']) && $_POST['mode'] = "upload"){
 	}
 }
 else{
-	echo "<br>\n";
+	echo "<br><br>\n";
 }
 ?>
 <textarea rows="40" cols="80"><?php echo $res; ?></textarea><br>
