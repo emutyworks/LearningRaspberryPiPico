@@ -37,7 +37,7 @@ void drawBall(int px, int py) {
   }
   /*
   Treat this color as transparent:
-  c = 16648 = 0b100000100001000 <- (24 bit color) r=8,g=8,b=8
+  c = 16648 = 0b100000100001000 <- (16 bit color) r=8,g=8,b=8
   */
 }
 
