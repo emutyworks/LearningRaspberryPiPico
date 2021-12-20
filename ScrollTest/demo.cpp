@@ -29,7 +29,7 @@ void drawObj(unsigned int *obj, int px, int py, int width, int height){
     }
   }
   //Treat this color as transparent:
-  //c = 16648 = 0b100000100001000 <- ( bit color) r=8,g=8,b=8
+  //c = 16648 = 0b100000100001000 <- (16 bit color) r=8,g=8,b=8
 }
 
 void scrollBg(unsigned int *bg, int sp, int height, int offset){
